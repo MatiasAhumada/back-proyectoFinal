@@ -7,23 +7,32 @@ const productoSchema = new Schema({
     minLength: 2,
     maxLength: 50,
   },
+  //   estado:{
+
+  // },
+
   precio: {
     type: Number,
     required: true,
     minLength: 1,
     maxLength: 10000,
   },
-  imagen: {
+  detalle: {
     type: String,
     required: true,
-    value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+    minLength: 1,
+    maxLength: 5000,
   },
   categoria: {
     type: String,
     required: true,
   },
+  imagen: {
+    type: String,
+    required: true,
+    value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+  },
 });
-
 
 const Producto = mongoose.model("producto", productoSchema);
 
