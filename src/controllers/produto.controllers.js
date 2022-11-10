@@ -1,4 +1,5 @@
 import Producto from "../models/producto";
+
 export const editarProducto = async (req, res) => {
     try {
       await Producto.findByIdAndUpdate(req.params.id, req.body);
