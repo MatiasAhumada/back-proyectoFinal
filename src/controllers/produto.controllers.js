@@ -1,3 +1,4 @@
+import Producto from "../models/producto";
 
 export const crearProducto = async (req, res) => {
   try {
@@ -13,8 +14,6 @@ export const crearProducto = async (req, res) => {
     });
   }
 };
-
-import Producto from "../models/producto";
 
 export const editarProducto = async (req, res) => {
     try {

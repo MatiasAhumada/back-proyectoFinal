@@ -1,11 +1,10 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-
-import path from "path";
-import "./database"
+import path from 'path'
+import './database'
 import router from "./routes/producto.routes";
-
+import routerUsuario from "./routes/usuarios.routes";
 
 const app = express();
 
@@ -21,3 +20,4 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, "../public")))
 app.use('/apiEpik', router)
+app.use('/apiEpik/user', routerUsuario)
