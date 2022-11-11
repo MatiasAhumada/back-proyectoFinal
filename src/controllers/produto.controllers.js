@@ -1,4 +1,5 @@
 
+import Producto from "../models/producto";
 export const crearProducto = async (req, res) => {
   try {
     const productoNuevo = new Producto(req.body);
@@ -14,7 +15,6 @@ export const crearProducto = async (req, res) => {
   }
 };
 
-import Producto from "../models/producto";
 
 export const editarProducto = async (req, res) => {
     try {
