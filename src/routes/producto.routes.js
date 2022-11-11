@@ -1,7 +1,13 @@
 import { Router } from "express";
-import { editarProducto } from "../controllers/produto.controllers";
+import { crearProducto, editarProducto } from "../controllers/produto.controllers";
 
 const router = Router();
+
+
+router.route("/producto")
+.get()
+.post(crearProducto)
+
 
 router
   .route("/productos/:id")
