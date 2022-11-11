@@ -1,5 +1,18 @@
 import Producto from "../models/producto";
 
+
+export const listarProductos = async(req, res)=>{
+  try {
+    const listaProductos = await Producto.find();
+    res.status(200).json(listaProductos)
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      mensaje: "Error al intentar buscar los productos"
+    })
+  }
+}
+
 export const crearProducto = async (req, res) => {
   try {
     const productoNuevo = new Producto(req.body);
