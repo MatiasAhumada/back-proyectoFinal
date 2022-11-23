@@ -16,9 +16,7 @@ router
 router
 .route("/productos/:id")
   // .get()
-  .put(editarProducto);
-  // .delete(borrarProducto)
-// .post()
-// .delete()
+  .put(editarProducto)
+  .delete(borrarProducto)
 
 export default router;
