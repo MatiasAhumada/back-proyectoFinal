@@ -55,3 +55,26 @@ export const editarProducto = async (req, res) => {
         });
     }
 };
+
+
+export const obtenerProducto = async(req, res)=>{
+  
+  try {
+    console.log(req.params)
+    const productoBuscado = await Producto.findById(req.params.id);
+    res.status(200).json(productoBuscado);
+
+  } catch (error) {
+    res.status(404).json({
+      mensaje:'Error no encontramos el producto solicitado'
+    })
+  }
+
+}
+
+
+
+
+
+
+
