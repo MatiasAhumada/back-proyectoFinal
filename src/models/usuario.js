@@ -4,7 +4,6 @@ export const usuarioSchema = Schema({
   nombre: {
     type: String,
     required: true,
-    unique: true,
     minLength: 5,
     maxLength: 50,
   },
