@@ -17,12 +17,12 @@ const productoSchema = new Schema({
     minLength: 1,
     maxLength: 10000,
   },
-  detalle: {
-    type: String,
-    required: true,
-    minLength: 1,
-    maxLength: 5000,
-  },
+  // detalle: {
+  //   type: String,
+  //   required: true,
+  //   minLength: 1,
+  //   maxLength: 5000,
+  // },
   categoria: {
     type: String,
     required: true,
