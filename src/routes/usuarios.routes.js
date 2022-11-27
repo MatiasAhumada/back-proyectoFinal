@@ -19,7 +19,7 @@ router.route("/usuarios")
    .isLength({min:5, max:50})
    .withMessage("El nombre del usuario debe tener entre 5 y 50 caracteres"), 
    check("email")
-   .isEmail
+   .isEmail()
    .notEmpty()
    .withMessage("Campo obligatorio")
    .isLength({min:10, max:50}),
@@ -39,7 +39,7 @@ router.route("/usuarios/:id")
     .isLength({min:5, max:50})
     .withMessage("El nombre del usuario debe tener entre 5 y 50 caracteres"), 
     check("email")
-    .isEmail
+    .isEmail()
     .notEmpty()
     .withMessage("Campo obligatorio")
     .isLength({min:10, max:50}),
