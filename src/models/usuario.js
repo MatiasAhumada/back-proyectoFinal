@@ -20,6 +20,10 @@ export const usuarioSchema = Schema({
     minLength: 5,
     maxLength: 50,
   },
+  isAdmin: {
+    type: Boolean,
+    value: false
+  }
 });
 
 const Usuario = mongoose.model("usuario", usuarioSchema);

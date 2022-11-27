@@ -26,7 +26,7 @@ router.route("/usuarios")
    check("password")
    .notEmpty()
    .withMessage("Campo olbigatorio")
-   .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)
+   .matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/)
   ],crearUsuario);
 
 
@@ -46,7 +46,7 @@ router.route("/usuarios/:id")
     check("password")
     .notEmpty()
     .withMessage("Campo olbigatorio")
-    .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)
+    .matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/)
    ],editarUsuario)
   .delete(borrarUsuario)
 
