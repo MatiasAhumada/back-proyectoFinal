@@ -19,14 +19,14 @@ router.route("/usuarios")
    .isLength({min:5, max:50})
    .withMessage("El nombre del usuario debe tener entre 5 y 50 caracteres"), 
    check("email")
-   .isEmail
+   .isEmail()
    .notEmpty()
    .withMessage("Campo obligatorio")
    .isLength({min:10, max:50}),
    check("password")
    .notEmpty()
    .withMessage("Campo olbigatorio")
-   .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)
+   .matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/)
   ],crearUsuario);
 
 
@@ -39,14 +39,14 @@ router.route("/usuarios/:id")
     .isLength({min:5, max:50})
     .withMessage("El nombre del usuario debe tener entre 5 y 50 caracteres"), 
     check("email")
-    .isEmail
+    .isEmail()
     .notEmpty()
     .withMessage("Campo obligatorio")
     .isLength({min:10, max:50}),
     check("password")
     .notEmpty()
     .withMessage("Campo olbigatorio")
-    .matches(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)
+    .matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/)
    ],editarUsuario)
   .delete(borrarUsuario)
 
