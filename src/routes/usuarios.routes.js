@@ -36,7 +36,7 @@ router.route("/usuarios/:id")
     check("nombre")
     .notEmpty()
     .withMessage("Campo olbigatorio")
-    .isLength({min:5, max:50})
+    .isLength({min:5, max:60})
     .withMessage("El nombre del usuario debe tener entre 5 y 50 caracteres"), 
     check("email")
     .isEmail()

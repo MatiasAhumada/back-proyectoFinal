@@ -12,7 +12,7 @@ export const usuarioSchema = Schema({
     required: true,
     unique: true,
     minLength: 10,
-    maxLength: 50,
+    maxLength: 60,
   },
   password: {
     type: String,
