@@ -1,17 +1,9 @@
 import mongoose from "mongoose";
 
-const url = 'mongodb://127.0.0.1:27017/stack-epica'
 
-// const connectDB = async ()=>{
+const url= 'mongodb+srv://mahumada:f1qaMbagdv8Knrv8@cluster0.nkoqvy9.mongodb.net/stack-epica';
 
-//     try{
-//         await mongoose.connect(url);
-//         console.log('BD connectada')
-//     }catch(error){
-//         console.log(error)
-//     }
-// }
-// connectDB();
+
 
 mongoose.connect(url);
 const connection = mongoose.connection
