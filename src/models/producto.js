@@ -7,9 +7,7 @@ const productoSchema = new Schema({
     minLength: 2,
     maxLength: 50,
   },
-  //   estado:{
-
-  // },
+ 
 
   precio: {
     type: Number,
