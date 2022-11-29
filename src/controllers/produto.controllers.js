@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import Producto from "../models/producto";
 
 
@@ -15,6 +16,12 @@ export const listarProductos = async(req, res)=>{
 
 export const crearProducto = async (req, res) => {
   try {
+    const errores = validationResult(req);
+    if(!errores.isEmpty()){
+      return res.status(400).json({
+        errores: errores.array()
+      })
+    }
     const productoNuevo = new Producto(req.body);
     await productoNuevo.save();
     res.status(201).json({
@@ -55,3 +62,26 @@ export const editarProducto = async (req, res) => {
         });
     }
 };
+
+
+export const obtenerProducto = async(req, res)=>{
+  
+  try {
+    console.log(req.params)
+    const productoBuscado = await Producto.findById(req.params.id);
+    res.status(200).json(productoBuscado);
+
+  } catch (error) {
+    res.status(404).json({
+      mensaje:'Error no encontramos el producto solicitado'
+    })
+  }
+
+}
+
+
+
+
+
+
+

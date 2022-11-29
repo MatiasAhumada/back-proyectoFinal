@@ -1,18 +1,19 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { crearProducto, editarProducto, listarProductos, borrarProducto, obtenerProducto } from "../controllers/produto.controllers";
+import { crearPedido, editarPedido, listarPedidos, borrarPedido, obtenerPedido } from "../controllers/pedidos.controlles";
 
 const router = Router();
 
 
-router.route("/productos")
-  .get(listarProductos)
-  .post([
-    check("nombreProducto")
+router.route("/pedidos")
+  .get(listarPedidos)
+  .post(
+    [
+    check("nombrePedido")
     .notEmpty()
     .withMessage("Campo obligatorio")
     .isLength({min:2, max:50})
-    .withMessage("El nobmre del producto debe tener entre 2 y 50 caracteres"),
+    .withMessage("El nobmre del pedido debe tener entre 2 y 50 caracteres"),
     check("precio")
     .notEmpty()
     .withMessage("Campo obligatorio")
@@ -36,16 +37,16 @@ router.route("/productos")
     .matches(/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/)
     .withMessage("Ingrese una URL valida")
   ],
-    crearProducto);
+    crearPedido);
 
-router.route("/productos/:id")
-  .get(obtenerProducto)
+router.route("/pedidos/:id")
+  .get(obtenerPedido)
   .put([
-    check("nombreProducto")
+    check("nombrePedido")
     .notEmpty()
     .withMessage("Campo obligatorio")
     .isLength({min:2, max:50})
-    .withMessage("El nobmre del producto debe tener entre 2 y 50 caracteres"),
+    .withMessage("El nobmre del pedido debe tener entre 2 y 50 caracteres"),
     check("precio")
     .notEmpty()
     .withMessage("Campo obligatorio")
@@ -68,7 +69,7 @@ router.route("/productos/:id")
     .withMessage("Campo obligatorio")
     .matches(/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/)
     .withMessage("Ingrese una URL valida")
-  ],editarProducto)
-  .delete(borrarProducto)
+  ],editarPedido)
+  .delete(borrarPedido)
 
 export default router;

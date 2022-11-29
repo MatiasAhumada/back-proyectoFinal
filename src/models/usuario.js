@@ -4,7 +4,6 @@ export const usuarioSchema = Schema({
   nombre: {
     type: String,
     required: true,
-    unique: true,
     minLength: 5,
     maxLength: 50,
   },
@@ -13,7 +12,7 @@ export const usuarioSchema = Schema({
     required: true,
     unique: true,
     minLength: 10,
-    maxLength: 50,
+    maxLength: 60,
   },
   password: {
     type: String,
@@ -21,6 +20,10 @@ export const usuarioSchema = Schema({
     minLength: 5,
     maxLength: 50,
   },
+  isAdmin: {
+    type: Boolean,
+    value: false
+  }
 });
 
 const Usuario = mongoose.model("usuario", usuarioSchema);
