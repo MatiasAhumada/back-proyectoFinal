@@ -1,40 +1,26 @@
 import mongoose, { Schema } from "mongoose";
-const pedidoSchema = new Schema({
-  nombrePedido: {
-    type: String,
-    required: true,
-    unique: true,
-    minLength: 2,
-    maxLength: 50,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    minLength: 10,
-    maxLength: 50,
-  },
 
-  precio: {
+const pedidoSchema = new Schema({
+  nombreUsuario: {
+    type: String,
+    required: true,
+    minLength: 8,
+    maxLength: 50,
+  },
+  pedido: {
+    type: Array,
+    required: true,
+    minLength: 3,
+  },
+  total: {
     type: Number,
     required: true,
-    minLength: 1,
-    maxLength: 10000,
+    min: 1,
+    maxLength: 1000000,
   },
-  detalle: {
+  estado: {
     type: String,
     required: true,
-    minLength: 1,
-    maxLength: 5000,
-  },
-  categoria: {
-    type: String,
-    required: true,
-  },
-  imagen: {
-    type: String,
-    required: true,
-    value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
   },
 });
 
