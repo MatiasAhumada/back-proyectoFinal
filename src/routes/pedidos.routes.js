@@ -1,75 +1,97 @@
 import { Router } from "express";
+import {
+  borrarPedido,
+  crearPedido,
+  editarPedido,
+  listarPedidos,
+  obtenerPedido,
+  listarPedidosPendientes,
+  listarPedidosElaboracion,
+  listarPedidosListos,
+  listarPedidosCancelados,
+  listarPedidosPersonales,
+} from "../controllers/pedidos.controllers";
 import { check } from "express-validator";
-import { crearPedido, editarPedido, listarPedidos, borrarPedido, obtenerPedido } from "../controllers/pedidos.controlles";
 
 const router = Router();
 
-
-router.route("/pedidos")
+router
+  .route("/pedidos")
   .get(listarPedidos)
   .post(
     [
-    check("nombrePedido")
-    .notEmpty()
-    .withMessage("Campo obligatorio")
-    .isLength({min:2, max:50})
-    .withMessage("El nobmre del pedido debe tener entre 2 y 50 caracteres"),
-    check("precio")
-    .notEmpty()
-    .withMessage("Campo obligatorio")
-    .isNumeric()
-    .withMessage("El precio debe ser un número")
-    .custom((valor)=>{
-      if(valor >=1 && valor <= 10000){
-        return true
-      }else{
-        throw new Error("El precio debe estar entre 1 y 10000")
-      }
-    }),
-     check("categoria")
-     .notEmpty()
-     .withMessage("Seleccione una categoria")
-    .isIn(["picante epiko", "medio picante", "comida caliente", "comida fria"])
-    .withMessage("Seleccione una categoria"),
-    check("imagen")
-    .notEmpty()
-    .withMessage("Campo obligatorio")
-    .matches(/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/)
-    .withMessage("Ingrese una URL valida")
-  ],
-    crearPedido);
+      check("nombreUsuario")
+        .notEmpty()
+        .withMessage("El nombre del usuario es un dato obligatorio")
+        .isLength({ min: 8, max: 50 })
+        .withMessage(
+          "El nombre del usuario debe contener entre 8 y 50 caracteres"
+        ),
+      check("pedido")
+        .notEmpty()
+        .withMessage("El pedido es un dato obligatorio")
+        .isLength({ min: 3 })
+        .withMessage("El pedido debe contener por lo menos 3 caracteres"),
+      check("total")
+        .notEmpty()
+        .withMessage("El total es un dato obligatorio")
+        .isNumeric({ min: 1, max: 1000000 })
+        .withMessage("El total debe ser entre $1 y $1000000"),
+      check("estado")
+        .notEmpty()
+        .withMessage("El estado es un dato obligatorio")
+        .isIn([
+          "Pendiente",
+          "En elaboracion",
+          "Listo para retirar",
+          "Cancelado",
+        ])
+        .withMessage("La categoria debe ser correcta"),
+    ],
+    crearPedido
+  );
 
-router.route("/pedidos/:id")
+router
+  .route("/pedidos/:id")
   .get(obtenerPedido)
-  .put([
-    check("nombrePedido")
-    .notEmpty()
-    .withMessage("Campo obligatorio")
-    .isLength({min:2, max:50})
-    .withMessage("El nobmre del pedido debe tener entre 2 y 50 caracteres"),
-    check("precio")
-    .notEmpty()
-    .withMessage("Campo obligatorio")
-    .isNumeric()
-    .withMessage("El precio debe ser un número")
-    .custom((valor)=>{
-      if(valor >=1 && valor <= 10000){
-        return true
-      }else{
-        throw new Error("El precio debe estar entre 1 y 10000")
-      }
-    }),
-     check("categoria")
-     .notEmpty()
-     .withMessage("Seleccione una categoria")
-    .isIn(["picante epiko", "medio picante", "comida caliente", "comida fria"])
-    .withMessage("Seleccione una categoria"),
-    check("imagen")
-    .notEmpty()
-    .withMessage("Campo obligatorio")
-    .matches(/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/)
-    .withMessage("Ingrese una URL valida")
-  ],editarPedido)
-  .delete(borrarPedido)
+  .put(
+    [
+      check("nombreUsuario")
+        .notEmpty()
+        .withMessage("El nombre del usuario es un dato obligatorio")
+        .isLength({ min: 8, max: 50 })
+        .withMessage(
+          "El nombre del usuario debe contener entre 8 y 50 caracteres"
+        ),
+      check("pedido")
+        .notEmpty()
+        .withMessage("El pedido es un dato obligatorio")
+        .isLength({ min: 3 })
+        .withMessage("El pedido debe contener por lo menos 3 caracteres"),
+      check("total")
+        .notEmpty()
+        .withMessage("El total es un dato obligatorio")
+        .isNumeric({ min: 1, max: 1000000 })
+        .withMessage("El total debe ser entre $1 y $1000000"),
+      check("estado")
+        .notEmpty()
+        .withMessage("El estado es un dato obligatorio")
+        .isIn([
+          "Pendiente",
+          "En elaboracion",
+          "Listo para retirar",
+          "Cancelado",
+        ])
+        .withMessage("La categoria debe ser correcta"),
+    ],
+    editarPedido
+  )
+  .delete(borrarPedido);
+
+router.route("/pedidos-pendientes").get(listarPedidosPendientes);
+router.route("/pedidos-elaboracion").get(listarPedidosElaboracion);
+router.route("/pedidos-listos").get(listarPedidosListos);
+router.route("/pedidos-cancelados").get(listarPedidosCancelados);
+router.route("/pedidos-personales").post(listarPedidosPersonales);
 
 export default router;
