@@ -22,4 +22,4 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, "../public")))
 app.use('/apiEpik', router)
 app.use('/apiEpik/user', routerUsuario)
-app.use("/apirestaurant/ped", pedidosRouter);
+app.use("/apiEpik/pedido", pedidosRouter);
