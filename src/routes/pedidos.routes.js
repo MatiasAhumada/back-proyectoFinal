@@ -20,12 +20,12 @@ router
   .get(listarPedidos)
   .post(
     [
-      check("nombreUsuario")
+      check("nombrePedido")
         .notEmpty()
-        .withMessage("El nombre del usuario es un dato obligatorio")
-        .isLength({ min: 5, max: 50 })
+        .withMessage("El nombre del pedido es un dato obligatorio")
+        .isLength({ min: 3, max: 1000 })
         .withMessage(
-          "El nombre del usuario debe contener entre 5 y 50 caracteres"
+          "El nombre del pedido debe contener entre 3 y 1000 caracteres"
         ),
       check("pedido")
         .notEmpty()
@@ -56,12 +56,12 @@ router
   .get(obtenerPedido)
   .put(
     [
-      check("nombreUsuario")
+      check("nombrePedido")
         .notEmpty()
-        .withMessage("El nombre del usuario es un dato obligatorio")
-        .isLength({ min: 5, max: 50 })
+        .withMessage("El nombre del pedido es un dato obligatorio")
+        .isLength({ min: 3, max: 1000 })
         .withMessage(
-          "El nombre del usuario debe contener entre 5 y 50 caracteres"
+          "El nombre del pedido debe contener entre 3 y 1000 caracteres"
         ),
       check("pedido")
         .notEmpty()
