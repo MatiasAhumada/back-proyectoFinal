@@ -4,13 +4,13 @@ const pedidoSchema = new Schema({
   nombrePedido: {
     type: String,
     required: true,
-    minLength: 3,
+    minLength: 1,
     maxLength: 1000,
   },
   pedido: {
     type: Array,
     required: true,
-    minLength: 3,
+    minLength: 1,
   },
   total: {
     type: Number,

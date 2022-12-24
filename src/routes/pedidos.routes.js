@@ -30,8 +30,8 @@ router
       check("pedido")
         .notEmpty()
         .withMessage("El pedido es un dato obligatorio")
-        .isLength({ min: 3 })
-        .withMessage("El pedido debe contener por lo menos 3 caracteres"),
+        .isLength({ min: 2 })
+        .withMessage("El pedido debe contener por lo menos 1 producto"),
       check("total")
         .notEmpty()
         .withMessage("El total es un dato obligatorio")
