@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const pedidoSchema = new Schema({
-  nombrePedido: {
+  nombreUsuario: {
     type: String,
     required: true,
     minLength: 1,
