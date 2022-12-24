@@ -22,7 +22,6 @@ export const crearPedido = async (req, res) => {
       });
     }
     const pedidoNuevo = new Pedido(req.body);
-   
     await pedidoNuevo.save();
     res.status(201).json({
       mensaje: "El pedido fue correctamente creado",

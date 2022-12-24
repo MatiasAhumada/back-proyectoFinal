@@ -20,7 +20,7 @@ router
   .get(listarPedidos)
   .post(
     [
-      check("nombreUsuario")
+      check("nombrePedido")
         .notEmpty()
         .withMessage("El nombre del pedido es un dato obligatorio")
         .isLength({ min: 3, max: 1000 })
@@ -30,8 +30,8 @@ router
       check("pedido")
         .notEmpty()
         .withMessage("El pedido es un dato obligatorio")
-        .isLength({ min: 2 })
-        .withMessage("El pedido debe contener por lo menos 1 producto"),
+        .isLength({ min: 3 })
+        .withMessage("El pedido debe contener por lo menos 3 caracteres"),
       check("total")
         .notEmpty()
         .withMessage("El total es un dato obligatorio")
@@ -56,7 +56,7 @@ router
   .get(obtenerPedido)
   .put(
     [
-      check("nombreUsuario")
+      check("nombrePedido")
         .notEmpty()
         .withMessage("El nombre del pedido es un dato obligatorio")
         .isLength({ min: 3, max: 1000 })
