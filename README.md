@@ -9,7 +9,7 @@
 
 <br>
 
-*Accedé a la demo del proyecto [aquí](https://stack-epil.netlify.app/)*
+*Accedé a la demo del proyecto [aquí](https://stack-epik.netlify.app/)*
 
 
 <br>
